@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이은수 — Industrial Designer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  :root {
+    --toss: #4D9FFF;
+    --toss-light: #EAF3FF;
+    --dark: #0A0A0A;
+    --white: #FAFAFA;
+    --gray: #888;
+    --border: #E5E5E5;
+  }
+
+  ::selection { background: var(--toss); color: #fff; }
+  ::-moz-selection { background: var(--toss); color: #fff; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 5vw; position: relative; }
+  .center-wrap { max-width: 800px; width: 100%; }
+  .hero-greeting { font-size: clamp(36px, 5.5vw, 80px); font-weight: 900; color: var(--dark); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0; opacity: 0; transform: translateY(30px); animation: fadeUp 0.9s ease forwards 0.3s; }
+  .hero-name { font-size: clamp(36px, 5.5vw, 80px); font-weight: 900; line-height: 1.15; letter-spacing: -0.03em; color: var(--dark); opacity: 0; transform: translateY(30px); animation: fadeUp 0.9s ease forwards 0.6s; }
+  .period { color: var(--toss); }
+  .hero-role { font-size: clamp(13px, 1.3vw, 16px); font-weight: 400; color: var(--gray); margin-top: 12px; margin-bottom: 0; letter-spacing: 0.04em; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s ease forwards 0.9s; }
+  .hero-intro { font-size: clamp(19px, 2vw, 23px); font-weight: 500; color: var(--dark); line-height: 1.6; margin-top: 72px; max-width: 640px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s ease forwards 1.2s; }
+
+  .scroll-hint { position: absolute; bottom: 48px; left: 0; right: 0; margin: 0 auto; width: fit-content; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeUp 0.8s ease forwards 1.4s; }
+  .scroll-hint span { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); font-weight: 300; }
+  .scroll-arrow { display: flex; justify-content: center; animation: scrollBounce 1.5s ease infinite 2s; }
+  @keyframes scrollBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+  /* ── DARK INTRO ── */
+  #intro { background: var(--dark); padding: 120px 5vw; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; }
+  #intro::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--toss), transparent); opacity: 0.4; }
+  .intro-block { max-width: 800px; width: 100%; margin: 0 auto; }
+  .intro-line { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .intro-line.visible { opacity: 1; transform: translateY(0); }
+  .intro-tagline { font-size: clamp(32px, 4.5vw, 58px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 64px; }
+  .intro-tagline .accent { color: var(--toss); font-weight: 900; }
+  .intro-para { font-size: clamp(18px, 1.9vw, 23px); font-weight: 500; color: rgba(255,255,255,0.9); line-height: 1.85; margin-bottom: 44px; }
+  .intro-para .hl { color: rgba(255,255,255,0.9); font-weight: 500; }
+  .intro-para .bl { color: var(--toss); font-weight: 700; }
+  .intro-results { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .result-pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1px solid rgba(77,159,255,0.3); border-radius: 100px; font-size: 13px; color: rgba(255,255,255,0.7); letter-spacing: 0.02em; transition: all 0.2s ease; }
+  .result-pill:hover { border-color: var(--toss); color: var(--white); font-weight: 700; background: rgba(77,159,255,0.08); transform: translateY(-1px); }
+  .result-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--toss); flex-shrink: 0; }
+
+  /* ── MAIN ── */
+  #main { background: var(--white); padding: 120px 5vw; }
+  .section { max-width: 800px; margin: 0 auto 100px; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .section.visible { opacity: 1; transform: translateY(0); }
+  .section-label { font-size: clamp(32px, 3.5vw, 52px); font-weight: 800; color: var(--dark); margin-bottom: 68px; letter-spacing: -0.02em; line-height: 1.1; }
+  .section-label .period { color: var(--toss); }
+
+  /* Core Strength */
+  .strength-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .strength-item { display: flex; align-items: flex-start; gap: 24px; padding: 34px 0; border-bottom: 1px solid var(--border); }
+  .strength-item:first-child { border-top: 1px solid var(--border); }
+  .strength-num { font-size: clamp(22px, 2.5vw, 32px); color: var(--dark); font-weight: 600; min-width: 36px; padding-top: 2px; flex-shrink: 0; }
+  .strength-text { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--dark); line-height: 1.5; }
+  .strength-sub { font-size: 14px; color: var(--gray); margin-top: 6px; font-weight: 400; line-height: 1.6; }
+  .strength-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .s-pill { display: inline-flex; align-items: center; font-size: 12px; font-weight: 500; color: var(--toss); background: var(--toss-light); border: 1px solid rgba(77,159,255,0.25); padding: 4px 12px; border-radius: 100px; transition: all 0.2s ease; }
+  .s-pill:hover { background: var(--toss); color: white; border-color: var(--toss); }
+
+  /* Work Experience */
+  .exp-block { margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--border); }
+  .exp-block:last-child { border-bottom: none; margin-bottom: 0; }
+  .exp-company-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .exp-company-col { position: sticky; top: 32px; }
+  .exp-projects-col { display: flex; flex-direction: column; gap: 36px; }
+  .exp-company { font-size: clamp(27px, 3vw, 42px); font-weight: 900; color: var(--dark); margin-bottom: 2px; line-height: 1.2; }
+  .exp-company .period { color: var(--toss); }
+  .exp-meta { font-size: 13px; color: var(--gray); font-weight: 400; line-height: 1.4; }
+  .exp-meta-role { margin-bottom: 4px; }
+  .exp-project-block { padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .exp-project-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-project-title { font-size: clamp(27px, 3vw, 42px); font-weight: 900; color: var(--dark); margin-bottom: 2px; line-height: 1.3; }
+  .exp-project-title .period { color: var(--toss); }
+  .exp-project-period { font-size: 13px; color: var(--gray); font-weight: 400; margin-bottom: 4px; }
+  .exp-sub-label { font-size: 25px; font-weight: 700; color: var(--dark); margin-bottom: 4px; margin-top: 12px; }
+  .exp-sub-label .period { color: var(--toss); }
+  .exp-desc-text { font-size: 15px; color: #333; line-height: 1.4; font-weight: 400; margin-bottom: 4px; }
+  .exp-bullet-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .exp-bullet-list li { font-size: 15px; color: #333; line-height: 1.4; display: flex; gap: 8px; align-items: flex-start; }
+  .exp-bullet-list li::before { content: '•'; color: var(--toss); flex-shrink: 0; font-weight: 700; }
+  .exp-result { display: inline-block; background: var(--toss-light); color: var(--toss); font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+
+  /* Awards */
+  .award-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .award-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--border); gap: 16px; flex-wrap: wrap; }
+  .award-item:first-child { border-top: 1px solid var(--border); }
+  .award-name { font-size: 17px; font-weight: 600; color: var(--dark); line-height: 1.4; }
+  .award-main { font-size: 17px; font-weight: 600; color: var(--dark); }
+  .award-sub { font-size: 13px; font-weight: 400; color: var(--gray); }
+  .award-year { font-size: 14px; color: var(--gray); font-weight: 400; flex-shrink: 0; }
+
+  /* Skills */
+  .skills-block { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .skills-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .skills-title { font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; color: var(--dark); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.2; }
+  .skills-title .period { color: var(--toss); }
+  .skills-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .skills-list li { font-size: 17px; color: var(--dark); line-height: 1.7; display: flex; gap: 10px; align-items: flex-start; }
+  .skills-list li::before { content: '•'; color: var(--toss); font-weight: 700; flex-shrink: 0; }
+
+  /* Tools */
+  .tool-row { display: flex; gap: 16px; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; }
+  .tool-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); min-width: 80px; flex-shrink: 0; }
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-tag { font-size: 13px; color: var(--dark); font-weight: 300; }
+  .tool-tag:not(:last-child)::after { content: '·'; margin-left: 8px; color: var(--border); }
+
+  /* Contact */
+  .contact-grid { display: flex; flex-wrap: wrap; gap: 24px; }
+  .contact-item { display: flex; flex-direction: column; gap: 4px; }
+  .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); }
+  .contact-val { font-size: 14px; color: var(--dark); font-weight: 400; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s; }
+  .contact-val:hover { color: var(--toss); border-color: var(--toss); }
+
+  footer { text-align: center; padding: 40px 8vw 60px; font-size: 12px; color: var(--gray); font-weight: 300; letter-spacing: 0.05em; border-top: 1px solid var(--border); }
+
+
+  /* Navigation */
+  #nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 5vw;
+    pointer-events: none;
+  }
+
+  .lang-toggle {
+    pointer-events: all;
+    display: flex;
+    gap: 2px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .lang-btn {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn.active {
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  .lang-btn:hover:not(.active) {
+    color: var(--dark);
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    #hero, #intro, #main { padding-left: 5vw; padding-right: 5vw; }
+    .exp-company-row { grid-template-columns: 1fr; gap: 16px; }
+    .exp-company-col { position: static; }
+    .exp-project-title { font-size: clamp(22px, 5.5vw, 30px); font-weight: 900; }
+    .exp-company { font-size: clamp(22px, 5.5vw, 30px); font-weight: 900; }
+    .exp-sub-label { font-size: 18px; }
+    .section-label { font-size: clamp(28px, 6vw, 40px); }
+    .strength-text { font-size: clamp(18px, 5vw, 26px); }
+    .strength-num { font-size: clamp(18px, 5vw, 26px); }
+    .hero-greeting, .hero-name { font-size: clamp(32px, 8vw, 56px); }
+    .contact-grid { gap: 16px; }
+    .skills-title { font-size: clamp(18px, 4.5vw, 24px); }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="center-wrap">
+    <p class="hero-greeting">반갑습니다<span style="color:var(--dark)">,</span></p>
+    <h1 class="hero-name">디자이너 이은수입니다<span class="period">.</span></h1>
+    <p class="hero-role">Industrial Designer · Product · Structure · CMF · Mass Production</p>
+    <p class="hero-intro">제품을 쓰다가 손이 멈추는 순간이 있어요. 왜 이 버튼이 여기 있는지, 이 동작이 왜 한 번 더 필요한지. 저는 그 순간을 그냥 넘기지 못하는 편입니다. 7년 4개월, 정수기부터 덴탈 콘솔, 차량용 방향제까지. 카테고리마다 손이 닿는 방식은 달랐지만, 그 불편을 잡아내고 구조로 옮기는 방식은 늘 같았습니다.</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow">
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="8" y1="0" x2="8" y2="18" stroke="#888" stroke-width="1.2"/>
+        <polyline points="3,13 8,19 13,13" stroke="#888" stroke-width="1.2" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- DARK INTRO -->
+<section id="intro">
+  <div class="intro-block">
+    <h2 class="intro-tagline intro-line">손이 닿는 모든 순간을 설계합니다<span style="color:var(--toss)">.</span></h2>
+    <p class="intro-para intro-line">
+      저는 제품을 쓰다가 이상하다 싶으면 그냥 넘기지 못합니다.
+      왜 이 버튼이 여기 있는지, 왜 이 동작이 한 번 더 필요한지, 직접 써보고 분해하고 다시 씁니다.
+      사용자가 복잡하다고 말하는 순간보다,
+      말하기 전에 이미 손이 멈추는 그 찰나를 먼저 잡으려 합니다.
+      그것이 제가 생각하는 <span class="bl">사용자가 처음 경험하는 자연스러움</span>입니다.
+    </p>
+    <p class="intro-para intro-line">
+      결제 단말기는 팔리는 제품이 아닙니다.
+      사장님이 매일 쓰고, 고객이 카드를 꺼내는 그 접점에 놓이는 물건입니다.
+      좋은 경험은 거래를 자연스럽게 만들고, 나쁜 경험은 그 순간을 어색하게 만듭니다.
+      저는 7년간 사람들의 손에 놓이는 물건을 만들어왔고,
+      그 경험이 어떻게 행동으로 이어지는지를 <span class="bl">시장에서 검증된 결과</span>로 확인해왔습니다.
+    </p>
+    <p class="intro-para intro-line">
+      토스플레이스에서 제가 하고 싶은 건 단순합니다.
+      사장님이 기기를 처음 받았을 때 설명서 없이도 쓸 수 있고,
+      고객이 카드를 내밀 때 머뭇거리지 않는 단말기를 만드는 것.
+      그 디테일을 <span class="bl">긴밀한 협업 속에서 디자인이 완성</span>되는 방식으로,
+      동료들과 함께 끝까지 밀어붙이고 싶습니다.
+    </p><div class="intro-results intro-line">
+      <span class="result-pill"><span class="dot"></span>현대Shop 카테고리 판매 1위</span>
+      <span class="result-pill"><span class="dot"></span>크라우드 펀딩 400%</span>
+      <span class="result-pill"><span class="dot"></span>Good Design Award Grand Prize</span>
+      <span class="result-pill"><span class="dot"></span>iF Design Award</span>
+      <span class="result-pill"><span class="dot"></span>Samsung × Dezeen Re:Create Finalist</span>
+      <span class="result-pill"><span class="dot"></span>Behance Featured — 4 Projects</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section id="main">
+
+  <!-- Core Strength -->
+  <div class="section">
+    <div class="section-label">Core Strength<span class="period">.</span></div>
+    <ul class="strength-list">
+      <li class="strength-item">
+        <span class="strength-num">01</span>
+        <div>
+          <div class="strength-text">무의식적 불편을 발견하고, 구조로 해결합니다.</div>
+          <div class="strength-sub">사용자가 말하지 않는 불편을 행동 관찰로 정의하고 Ergonomics, 사용성 테스트, 수치 검증으로 설계에 반영합니다.</div>
+          <div class="strength-pills">
+            <span class="s-pill">Hanaro — Dead Space 재설계 → GD Grand Prize</span>
+            <span class="s-pill">AUBE — 물통 교체 불편 → 하단 레일 구조 도입</span>
+            <span class="s-pill">Allevo — 사용성 테스트 18% 개선</span>
+          </div>
+        </div>
+      </li>
+      <li class="strength-item">
+        <span class="strength-num">02</span>
+        <div>
+          <div class="strength-text">소재와 컬러가 브랜드가 되게 설계합니다.</div>
+          <div class="strength-sub">CMF 전략, 소재 선정, 표면 처리를 브랜드 아이덴티티와 연결해 라인업 전체의 일관성을 만듭니다.</div>
+          <div class="strength-pills">
+            <span class="s-pill">OBJET — 돌가루 도료 자체 개발 → 판매 1위</span>
+            <span class="s-pill">TARAE — CMF 3컬러 라인업 → 펀딩 400%</span>
+            <span class="s-pill">Treon — Wood·SUS·Alcantara 프리미엄 라인업</span>
+          </div>
+        </div>
+      </li>
+      <li class="strength-item">
+        <span class="strength-num">03</span>
+        <div>
+          <div class="strength-text">컨셉부터 양산까지, 전 과정을 완성합니다.</div>
+          <div class="strength-sub">기구 설계 이해, 금형 프로세스, 목업 검증, OEM/ODM 협업, 양산 F/U까지 혼자 완결할 수 있는 실행력을 갖추고 있습니다.</div>
+          <div class="strength-pills">
+            <span class="s-pill">7년 4개월 전 과정 단독 리드</span>
+            <span class="s-pill">국내외 OEM/ODM 협업 다수</span>
+            <span class="s-pill">iF · GD · Samsung×Dezeen 수상</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="section">
+    <div class="section-label">Work Experience<span class="period">.</span></div>
+
+    <!-- 이지스오토랩 -->
+    <div class="exp-block">
+      <div class="exp-company-row">
+        <div class="exp-company-col">
+          <div class="exp-company">(주)이지스오토랩<span class="period">.</span></div>
+          <div class="exp-meta"><div class="exp-meta-role">디자인연구소 매니저 · 제품 디자인 리드</div><div>2024. 03 — 재직 중</div></div>
+        </div>
+        <div class="exp-projects-col">
+          <div class="exp-project-block">
+            <div class="exp-project-title">Natural Objet<span class="period">.</span></div>
+            <div class="exp-project-period">현대 스마트키 케이스</div>
+            <div class="exp-project-period">2024. 06 — 2024. 12</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">현대 스마트키의 투박한 외관에 대한 사용자 인식 문제를 조약돌 아이덴티티 기반 CMF로 해결. 돌가루 혼합 도료를 자체 개발하고 T0~T10 반복 프로토타입으로 최적 촉감과 핏감을 검증.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>돌가루 혼합 도료 자체 개발, 10회 이상 혼합비 시도 후 최종 스펙 확정</li>
+              <li>PC + 아연합금 이종 소재 조합, 끼움 구조로 내구성 확보</li>
+              <li>T0~T10 프로토타입 반복 테스트, 버튼 피드백 및 핏감 최적화</li>
+              <li>OEM/ODM 협업, 양산 F/U 총괄</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>현대Shop 2025년도 카테고리 판매 1위 <span class="exp-result">판매 1위</span></li>
+              <li>KDA(코리아디자인어워드) 수록</li>
+            </ul>
+          </div>
+          <div class="exp-project-block">
+            <div class="exp-project-title">TARAE<span class="period">.</span></div>
+            <div class="exp-project-period">부착형 디퓨저 & 브랜드 구축</div>
+            <div class="exp-project-period">2024. 03 — 2024. 09</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">차량 진동 환경에서의 탈락 없는 고정력을 자석 부착 구조로 해결. 브랜드 네이밍, 스토리, CMF, 패키지를 통합 설계하여 단순 소비재가 아닌 프리미엄 라이프스타일 오브제로 포지셔닝.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>자석 부착 구조 설계, 네오디움 자석 + 철판 인서트 조합</li>
+              <li>실리콘 CMF 3컬러 라인업 기획, ODM 관리</li>
+              <li>브랜드 컨셉, 로고, 패키지, 태그 통합 디자인</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>크라우드 펀딩 400% 달성 <span class="exp-result">펀딩 400%</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 바인디자인 -->
+    <div class="exp-block">
+      <div class="exp-company-row">
+        <div class="exp-company-col">
+          <div class="exp-company">(주)바인디자인어소시에이츠<span class="period">.</span></div>
+          <div class="exp-meta"><div class="exp-meta-role">제품디자인팀 대리</div><div>2022. 05 — 2023. 06</div></div>
+        </div>
+        <div class="exp-projects-col">
+          <div class="exp-project-block">
+            <div class="exp-project-title">Allevo<span class="period">.</span></div>
+            <div class="exp-project-period">커트러리 세트</div>
+            <div class="exp-project-period">2022. 07 — 2023. 01</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">여성 타겟 프리미엄 커트러리의 표준 규격과 실제 손 크기, 힘 전달 패턴의 불일치로 인한 피로도 문제를 구조 재정의로 해결.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>손 크기, 힘 전달 패턴 분석, 숟가락 192mm / 젓가락 215mm 길이 체계 정립</li>
+              <li>캐릭터 라인을 그립 유도 구조 요소로 설계</li>
+              <li>사내 사용성 테스트(N=20) 실시, 결과 기반 스펙 확정, 양산 F/U</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>조작성·피로도 체감 18% 개선 <span class="exp-result">18% 개선</span></li>
+              <li>PB CMF 라인업 정립, 현대홈쇼핑 납품</li>
+            </ul>
+          </div>
+          <div class="exp-project-block">
+            <div class="exp-project-title">The Edge<span class="period">.</span></div>
+            <div class="exp-project-period">프라이팬 핸들</div>
+            <div class="exp-project-period">2022. 07 — 2023. 03</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">PB 홈쇼핑 전용 프라이팬 핸들의 실사용 피팅감과 힘 전달 효율 문제를 해결. 핸들 단면 구조와 SUS:Color 7:3 비율 아이덴티티를 동시에 설계해 기능과 브랜드를 통합.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>핸들 피팅, 힘 전달 경로 실측 분석, SUS:Color 7:3 비율 브랜드 아이덴티티 구축</li>
+              <li>조작성, 안전성 개선 기반 PB 홈쇼핑 전용 라인업 확장</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>핸들 피팅·힘 전달 정확도 22% 향상 <span class="exp-result">22% 향상</span></li>
+            </ul>
+          </div>
+          <div class="exp-project-block">
+            <div class="exp-project-title">Nicom<span class="period">.</span></div>
+            <div class="exp-project-period">도서 무인반납기</div>
+            <div class="exp-project-period">2022. 09 — 2023. 04</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">도서관 반납 환경에서 휠체어 사용자, 어린이 등 다양한 신체 조건의 사용자가 직관적으로 이용할 수 있도록 접근성과 시인성 중심의 무인반납기 UI·구조 설계.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>사용자 신체 조건별 접근 높이·각도 분석, 인터페이스 배치 최적화</li>
+              <li>시인성 강화 컬러 시스템 및 직관적 아이콘 UI 설계</li>
+              <li>구조 안전성·내구성 고려한 외형 설계, 양산 F/U</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>디자인페스티벌 우수 선정 <span class="exp-result">우수 선정</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 디자인톡톡 -->
+    <div class="exp-block">
+      <div class="exp-company-row">
+        <div class="exp-company-col">
+          <div class="exp-company">(주)디자인톡톡<span class="period">.</span></div>
+          <div class="exp-meta"><div class="exp-meta-role">제품디자인팀 사원</div><div>2021. 06 — 2022. 04</div></div>
+        </div>
+        <div class="exp-projects-col">
+          <div class="exp-project-block">
+            <div class="exp-project-title">Solucom<span class="period">.</span></div>
+            <div class="exp-project-period">스마트 무선충전 멀티탭</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">가정·사무 환경용 무선충전 멀티탭의 케이블 정리 및 포트 접근성 UX를 재설계. 직관적인 사용성과 안전한 열 방출 구조를 컴팩트한 형태 안에서 균형 있게 설계.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>포트 접근 패턴과 케이블 동선 혼잡 분석, UX 레이아웃 재설계</li>
+              <li>무선충전 영역 직관적 배치, 열 방출 구조 고려 양산 설계</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>Good Design Award 2022 수상 <span class="exp-result">GD Award</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사이픽스 -->
+    <div class="exp-block">
+      <div class="exp-company-row">
+        <div class="exp-company-col">
+          <div class="exp-company">(주)사이픽스<span class="period">.</span></div>
+          <div class="exp-meta"><div class="exp-meta-role">Creative Consultant / 제품디자인팀 사원</div><div>2017. 03 — 2020. 04</div></div>
+        </div>
+        <div class="exp-projects-col">
+          <div class="exp-project-block">
+            <div class="exp-project-title">AUBE<span class="period">.</span></div>
+            <div class="exp-project-period">Daiohs 워터서버</div>
+            <div class="exp-project-period">2018. 08 — 2019. 08</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">오피스 환경에서 반복되는 물통 교체의 허리 부담, 오염 위험과 기존 접촉식 디스플레이의 위생 문제를 구조와 인터페이스 설계로 해결. 업계 최초 비접촉 UX 구현.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>물통 교체 동작 분석, 하단 레일 구조 도입으로 역동작 없이 교체 가능</li>
+              <li>IR Zone 매핑 기반 비접촉 디스플레이 설계 (좌/중/우 구역 분리)</li>
+              <li>LED Bar 색상 피드백과 조작 구역 연동, 일본 오피스 환경 기준 재설계, 양산 F/U</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>업계 최초 비접촉 조작 UX 구현, 일본 시장 양산 성공 <span class="exp-result">일본 양산</span></li>
+            </ul>
+          </div>
+          <div class="exp-project-block">
+            <div class="exp-project-title">Hanaro<span class="period">.</span></div>
+            <div class="exp-project-period">오스템 덴탈 콘솔</div>
+            <div class="exp-project-period">2019. 12 — 2020. 02</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">기능은 있었지만 사용자 행동 중심으로 설계되지 않은 덴탈 콘솔의 Dead Space, 낙하 위험, 접근성 저하 문제를 공간 역전 설계로 해결.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>의료 현장 사용자 행동 관찰, AS-IS Dead Space 정의</li>
+              <li>하부 티슈 수납, 상부 트레이로 공간 역전, 콘솔 길이 단축</li>
+              <li>타사 덴탈 콘솔 범용 조립성 설계 시스템 구축, 양산 F/U</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>굿디자인 어워드 Grand Prize 수상 <span class="exp-result">GD Grand Prize</span></li>
+              <li>iF 디자인 어워드 2021 수상 <span class="exp-result">iF Award 2021</span></li>
+            </ul>
+          </div>
+          <div class="exp-project-block">
+            <div class="exp-project-title">MEGA<span class="period">.</span></div>
+            <div class="exp-project-period">대형 공기청정기</div>
+            <div class="exp-project-period">2017. 08 — 2018. 07</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">공공·업소 환경을 위한 대형 공기청정기 설계. 개발 중 오토 그릴의 위생·청소 불가 이슈를 직접 발견해 고정 그릴로 방향을 전환, 이중 구조로 아동 안전까지 확보.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>오토 그릴 개발 중 위생, 청소 이슈 발견, 고정 그릴로 리디자인</li>
+              <li>이중 그릴(육각 메쉬 플레이트) 개발로 아동 안전 설계</li>
+              <li>공공, 업소, B2C 환경 양산 F/U</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>공공·업소·B2C 환경 양산 완료 <span class="exp-result">양산 완료</span></li>
+            </ul>
+          </div>
+          <div class="exp-project-block">
+            <div class="exp-project-title">LUA<span class="period">.</span></div>
+            <div class="exp-project-period">식물조명</div>
+            <div class="exp-project-period">2019. 05 — 2020. 03</div>
+            <div class="exp-sub-label">Description<span class="period">.</span></div>
+            <p class="exp-desc-text">1인가구의 채광 부족 환경에서 식물이 자라지 못하는 문제를 리서치로 정의하고, 기존 식물 전용 조명의 인테리어 이질감 문제를 해결한 라이프스타일 식물조명 설계.</p>
+            <div class="exp-sub-label">What did I do<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>1인가구 식물 고사 원인 리서치, 채광 부족 80% 인사이트 도출</li>
+              <li>인테리어 조명 겸용 주백색 식물 LED 개발, 파이프 밴딩, 두께 반복 테스트</li>
+              <li>레더, 우드 조합 CMF 설계, 양산 F/U</li>
+            </ul>
+            <div class="exp-sub-label">Results<span class="period">.</span></div>
+            <ul class="exp-bullet-list">
+              <li>Seeders 클라이언트 양산 납품 완료 <span class="exp-result">양산 납품</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Awards -->
+  <div class="section">
+    <div class="section-label">Awards & Recognition<span class="period">.</span></div>
+    <ul class="award-list">
+      <li class="award-item"><span class="award-name"><span class="award-main">Good Design Award Grand Prize</span><span class="award-sub"> — 오스템임플란트 K5 Hanaro 콘솔</span></span><span class="award-year">2021</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">iF Design Award Winner</span><span class="award-sub"> — 오스템임플란트 K5 Hanaro 콘솔</span></span><span class="award-year">2021</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">Good Design Award Winner</span><span class="award-sub"> — 스마트 무선충전 멀티탭</span></span><span class="award-year">2022</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">Samsung × Dezeen Re:Create Design Challenge</span><span class="award-sub"> — Finalist</span></span><span class="award-year">2023</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">KDA(코리아디자인어워드)</span><span class="award-sub"> — Natural Objet · TARAE 수록</span></span><span class="award-year">2024</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">Behance Product Design 선정</span><span class="award-sub"> — 4개 프로젝트</span></span><span class="award-year">2023–2025</span></li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-label">Education<span class="period">.</span></div>
+    <ul class="award-list">
+      <li class="award-item"><span class="award-name">고려사이버대학교 · 디자인공학과 · 학사 <span style="color:var(--gray);font-size:13px;font-weight:300;margin-left:8px;">GPA 4.17 / 4.5</span></span><span class="award-year">2018 — 2020</span></li>
+      <li class="award-item"><span class="award-name">유한대학교 · 테크노산업디자인학과 · 전문학사 <span style="color:var(--gray);font-size:13px;font-weight:300;margin-left:8px;">GPA 4.19 / 4.5</span></span><span class="award-year">2012 — 2017</span></li>
+    </ul>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-label">Skills<span class="period">.</span></div>
+    <div class="skills-block">
+      <div class="skills-title">Overall<span class="period">.</span></div>
+      <ul class="skills-list">
+        <li>형태보다 사용자의 행동과 경험을 먼저 설계합니다.</li>
+        <li>트렌드보다 맥락에 맞는 디자인이 옳다고 믿습니다. 유행하는 조형보다 오래 쓰이는 구조를 추구합니다.</li>
+        <li>익숙하지 않은 카테고리도 리서치와 현장 관찰로 빠르게 파악해 설계에 반영할 수 있습니다.</li>
+        <li>팀의 프로세스와 커뮤니케이션 방식을 개선하는 데 주도적으로 참여합니다.</li>
+      </ul>
+    </div>
+    <div class="skills-block">
+      <div class="skills-title">Communication<span class="period">.</span></div>
+      <ul class="skills-list">
+        <li>직급에 관계없이 디자인 의도와 근거를 명확하게 표현합니다.</li>
+        <li>제조사, 개발사, 마케팅 팀 등 다양한 직군과의 협업에서 공통 언어를 만드는 것을 중요하게 생각합니다.</li>
+        <li>빠른 결정보다 정확한 합의가 더 좋은 양산 결과를 만든다고 믿습니다.</li>
+      </ul>
+    </div>
+    <div class="skills-block">
+      <div class="skills-title">Design Process<span class="period">.</span></div>
+      <ul class="skills-list">
+        <li>사용자 행동 관찰과 리서치로 문제를 정의하고, 스케치와 목업으로 빠르게 검증합니다.</li>
+        <li>CMF 전략은 형태 설계와 동시에 진행합니다. 소재와 컬러는 브랜드 언어의 일부입니다.</li>
+        <li>컨셉부터 양산 F/U까지 전 과정을 혼자 완결할 수 있습니다.</li>
+      </ul>
+    </div>
+    <div class="skills-block">
+      <div class="skills-title">Manufacturing<span class="period">.</span></div>
+      <ul class="skills-list">
+        <li>금형 구조, 언더컷, 뽑기 구배 등 양산 제약을 이해하고 설계에 반영합니다.</li>
+        <li>OEM/ODM 협업 경험을 바탕으로 제조사와 실질적인 기술 커뮤니케이션이 가능합니다.</li>
+        <li>목업 단계에서 양산 스펙을 미리 검토해 후반 수정 비용을 줄입니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tools -->
+  <div class="section">
+    <div class="section-label">Tools<span class="period">.</span></div>
+    <div class="tool-row"><span class="tool-label">3D / 렌더</span><div class="tool-tags"><span class="tool-tag">Rhino3D</span><span class="tool-tag">Keyshot</span><span class="tool-tag">Fusion360</span><span class="tool-tag">Blender</span></div></div>
+    <div class="tool-row"><span class="tool-label">2D / 그래픽</span><div class="tool-tags"><span class="tool-tag">Illustrator</span><span class="tool-tag">Photoshop</span><span class="tool-tag">Sketch</span></div></div>
+    <div class="tool-row"><span class="tool-label">협업 / AI</span><div class="tool-tags"><span class="tool-tag">Figma</span><span class="tool-tag">Slack</span><span class="tool-tag">Notion</span><span class="tool-tag">Midjourney</span><span class="tool-tag">Claude</span><span class="tool-tag">Vizcom</span><span class="tool-tag">Adobe Firefly</span></div></div>
+  </div>
+
+  <!-- Other Experiences -->
+  <div class="section">
+    <div class="section-label">Other Experiences<span class="period">.</span></div>
+    <ul class="award-list">
+      <li class="award-item"><span class="award-name"><span class="award-main">PDF Haus 26기</span><span class="award-sub"> — 제품 디자인 활동</span></span><span class="award-year">2023. 07 — 09</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">아트쿵 실험 미술학원</span><span class="award-sub"> — 브랜딩 디자인 담당</span></span><span class="award-year">2023</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">삼성전자 갤럭시 '은하씨' 5기 크리에이터</span></span><span class="award-year">2021</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">삼성전자 갤럭시 '은하씨' 2기 크리에이터</span></span><span class="award-year">2019</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">유한대학교 제품 디자인 강연 & 멘토</span></span><span class="award-year">2017 — 2018</span></li>
+    </ul>
+  </div>
+
+  <!-- Contact -->
+  <div class="section">
+    <div class="section-label">Contact<span class="period">.</span></div>
+    <div class="contact-grid">
+      <div class="contact-item"><span class="contact-label">Phone</span><span class="contact-val">010.7437.6037</span></div>
+      <div class="contact-item"><span class="contact-label">Email</span><a class="contact-val" href="/cdn-cgi/l/email-protection#0c68697f656b62697e6979627f792a2f3a38376b616d65602a2f383a376f6361">designereunsu&#64;gmail&#46;com</a></div>
+      <div class="contact-item"><span class="contact-label">Behance</span><a class="contact-val" href="https://behance.net/designereunsu" target="_blank">behance.net/designereunsu</a></div>
+      <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-val" href="https://linkedin.com/in/eunsu1ee" target="_blank">linkedin.com/in/eunsu1ee</a></div>
+    </div>
+  </div>
+
+</section>
+
+<footer>이은수 · Industrial Designer · 2026</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+
+/* ── 언어 토글 ── */
+var currentLang = 'ko';
+
+var translations = {
+  ko: {
+    'hero-greeting': '반갑습니다,',
+    'hero-name': '디자이너 이은수입니다.',
+    'hero-role': 'Industrial Designer · Product · Structure · CMF · Mass Production',
+    'hero-intro': '제품을 쓰다가 손이 멈추는 순간이 있어요. 왜 이 버튼이 여기 있는지, 이 동작이 왜 한 번 더 필요한지. 저는 그 순간을 그냥 넘기지 못하는 편입니다. 7년 4개월, 정수기부터 덴탈 콘솔, 차량용 방향제까지. 카테고리마다 손이 닿는 방식은 달랐지만, 그 불편을 잡아내고 구조로 옮기는 방식은 늘 같았습니다.',
+    'intro-tagline': '손이 닿는 모든 순간을 설계합니다.',
+    'section-cs': 'Core Strength.',
+    'section-we': 'Work Experience.',
+    'section-aw': 'Awards & Recognition.',
+    'section-ed': 'Education.',
+    'section-sk': 'Skills.',
+    'section-tl': 'Tools.',
+    'section-oe': 'Other Experiences.',
+    'section-ct': 'Contact.',
+  },
+  en: {
+    'hero-greeting': 'Hello,',
+    'hero-name': "I'm Eunsu Lee, Designer.",
+    'hero-role': 'Industrial Designer · Product · Structure · CMF · Mass Production',
+    'hero-intro': 'Good hardware designs behavior before form. The moment a user picks up a product, the feel of pressing a button, a structure that holds up through repeated use — that is the domain I have focused on for 7 years and 4 months. From concept to CMF design, OEM/ODM collaboration, and mass production follow-up, I have completed every phase firsthand, proven by results validated in the market.',
+    'intro-tagline': 'Designing every moment your hand touches.',
+    'section-cs': 'Core Strength.',
+    'section-we': 'Work Experience.',
+    'section-aw': 'Awards & Recognition.',
+    'section-ed': 'Education.',
+    'section-sk': 'Skills.',
+    'section-tl': 'Tools.',
+    'section-oe': 'Other Experiences.',
+    'section-ct': 'Contact.',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  var t = translations[lang];
+
+  // Hero
+  var greet = document.querySelector('.hero-greeting');
+  if (greet) greet.innerHTML = t['hero-greeting'].replace(',', '<span style="color:var(--dark)">,</span>').replace('Hello,', 'Hello<span style="color:var(--dark)">,</span>');
+  var name = document.querySelector('.hero-name');
+  if (name) {
+    var txt = lang === 'ko' ? '디자이너 이은수입니다' : "I'm Eunsu Lee, Designer";
+    name.innerHTML = txt + '<span class="period">.</span>';
+  }
+  var intro = document.querySelector('.hero-intro');
+  if (intro) intro.textContent = t['hero-intro'];
+
+  // Tagline
+  var tagline = document.querySelector('.intro-tagline');
+  if (tagline) {
+    var tltxt = lang === 'ko' ? '손이 닿는 모든 순간을 설계합니다' : 'Designing every moment your hand touches';
+    tagline.innerHTML = tltxt + '<span style="color:var(--toss)">.</span>';
+  }
+
+  // data-ko / data-en 속성 처리
+  document.querySelectorAll('[data-ko]').forEach(function(el) {
+    el.textContent = lang === 'ko' ? el.getAttribute('data-ko') : el.getAttribute('data-en');
+  });
+}
+
+(function() {
+  var introLines = document.querySelectorAll('.intro-line');
+  var sections = document.querySelectorAll('.section');
+  var introObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var siblings = Array.from(el.parentElement.querySelectorAll('.intro-line'));
+        var idx = siblings.indexOf(el);
+        setTimeout(function() { el.classList.add('visible'); }, idx * 80);
+        introObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  introLines.forEach(function(el) { introObs.observe(el); });
+  var secObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        secObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+  sections.forEach(function(el) { secObs.observe(el); });
+})();
+</script>
+</body>
+</html>
