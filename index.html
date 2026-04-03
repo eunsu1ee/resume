@@ -601,7 +601,7 @@
     <div class="section-label">Other Experiences<span class="period">.</span></div>
     <ul class="award-list">
       <li class="award-item"><span class="award-name"><span class="award-main">PDF Haus 26기</span><span class="award-sub"> — 제품 디자인 활동</span></span><span class="award-year">2023. 07 — 09</span></li>
-      <li class="award-item"><span class="award-name"><span class="award-main">아트쿵 실험 미술학원</span><span class="award-sub"> — 브랜딩 디자인 담당</span></span><span class="award-year">2023</span></li>
+      <li class="award-item"><span class="award-name"><span class="award-main">ArtKoong 실험 미술학원</span><span class="award-sub"> — 브랜딩 디자인 담당</span></span><span class="award-year">2023</span></li>
       <li class="award-item"><span class="award-name"><span class="award-main">삼성전자 갤럭시 '은하씨' 5기 크리에이터</span></span><span class="award-year">2021</span></li>
       <li class="award-item"><span class="award-name"><span class="award-main">삼성전자 갤럭시 '은하씨' 2기 크리에이터</span></span><span class="award-year">2019</span></li>
       <li class="award-item"><span class="award-name"><span class="award-main">유한대학교 제품 디자인 강연 & 멘토</span></span><span class="award-year">2017 — 2018</span></li>
@@ -613,8 +613,8 @@
     <div class="section-label">Contact<span class="period">.</span></div>
     <div class="contact-grid">
       <div class="contact-item"><span class="contact-label">Phone</span><span class="contact-val">010.7437.6037</span></div>
-      <div class="contact-item"><span class="contact-label">Email</span><a class="contact-val" href="mailto:designereunsu&#64;gmail&#46;com">designereunsu&#64;gmail&#46;com</a></div>
-      <div class="contact-item"><span class="contact-label">Behance</span><a class="contact-val" href="https://behance.net/designereunsu" target="_blank">behance.net/designereunsu</a></div>
+      <div class="contact-item"><span class="contact-label">Email</span><a class="contact-val" href="#" id="contact-email"><!--contact--></a></div>
+      <div class="contact-item"><span class="contact-label">Behance</span><a class="contact-val" href="#" id="contact-behance" target="_blank">behance.net/...</a></div>
       <div class="contact-item"><span class="contact-label">LinkedIn</span><a class="contact-val" href="https://linkedin.com/in/eunsu1ee" target="_blank">linkedin.com/in/eunsu1ee</a></div>
     </div>
   </div>
@@ -624,285 +624,581 @@
 <footer>이은수 · Industrial Designer · 2026</footer>
 
 <script>
-/* ── 언어 토글 ── */
-var currentLang = 'ko';
+/* email render */
+(function(){
+  var n1='design',n2='ereunsu';
+  var g1='gm',g2='ail',g3='.com';
+  var un=n1+n2, dm=g1+g2+g3;
 
-var EN = {
-  /* Hero */
-  greet: 'Hello,',
-  name: "I'm Eunsu Lee, Designer.",
-  role: 'Industrial Designer · Product · Structure · CMF · Mass Production',
-  intro: "There are moments when your hand just stops — wondering why this button is here, or why this action takes one extra step. I can't help but dig into those moments. 7 years and 4 months, from water purifiers to dental consoles to car diffusers. The way hands touched each product was different, but the way I caught the friction and translated it into structure was always the same.",
-
-  /* Dark Intro */
-  tagline: 'Designing every moment your hand touches.',
-  p1: "I can't let go of something that feels off. I try it, take it apart, try again. Rather than waiting for users to say "this is complicated," I look for the moment their hand pauses — before they even say a word. That's what I mean by the naturalness users feel on first touch.",
-  p1bl: 'the naturalness users feel on first touch',
-  p2: "A payment terminal isn't something people buy. It's what a shop owner uses every day, the point where a customer reaches for their card. Good experience makes that transaction seamless. Bad experience makes it awkward. I've spent 7 years making things that end up in people's hands, watching how experience translates into behavior — confirmed by results validated in the market.",
-  p2bl: 'results validated in the market',
-  p3: "What I want to do at Toss Place is simple. Make a terminal that a shop owner can figure out without a manual, and that a customer can hand their card to without hesitation. I want to push those details all the way through, in the way good design is only completed through close collaboration — together with the team.",
-  p3bl: 'in the way good design is only completed through close collaboration',
-
-  /* Sections */
-  coreStrength: 'Core Strength.',
-  c1title: 'Finding hidden friction, solving it through structure.',
-  c1sub: 'Behavioral observation, ergonomics, usability testing, and numerical validation inform every design decision.',
-  c2title: 'Designing so that material and color become the brand.',
-  c2sub: 'CMF strategy, material selection, and surface treatment are connected to brand identity to create consistency across the lineup.',
-  c3title: 'From concept to mass production — completing every phase.',
-  c3sub: 'From understanding mechanism design and tooling processes, to mock-up validation, OEM/ODM collaboration, and production F/U.',
-
-  workExp: 'Work Experience.',
-  awards: 'Awards & Recognition.',
-  education: 'Education.',
-  skills: 'Skills.',
-  tools: 'Tools.',
-  otherExp: 'Other Experiences.',
-  contact: 'Contact.',
-
-  /* Skills */
-  overall: 'Overall.',
-  o1: 'I design behavior and experience before form.',
-  o2: "I believe context matters more than trends. I pursue structures that last over forms that are fashionable.",
-  o3: 'Even in unfamiliar categories, I can quickly understand and translate research and field observation into design decisions.',
-  o4: "I actively participate in improving the team's processes and communication.",
-  communication: 'Communication.',
-  comm1: 'I express design intent and rationale clearly, regardless of hierarchy.',
-  comm2: 'Building a common language across manufacturers, developers, and marketing teams is something I value deeply.',
-  comm3: 'I believe precise consensus leads to better production outcomes than fast decisions.',
-  designProcess: 'Design Process.',
-  dp1: 'I define problems through user observation and research, then validate quickly with sketches and mock-ups.',
-  dp2: 'CMF strategy runs in parallel with form design. Material and color are part of the brand language.',
-  dp3: 'I have the execution to complete the entire process from concept to production F/U on my own.',
-  manufacturing: 'Manufacturing.',
-  mfg1: 'I understand tooling structure, undercuts, and draft angles, and reflect production constraints in my designs.',
-  mfg2: 'Based on OEM/ODM collaboration experience, I can communicate technically with manufacturers.',
-  mfg3: 'I review production specs at the mock-up stage to reduce late-stage revision costs.',
-
-  /* Education */
-  edu1: 'Korea Cyber University · Design Engineering · B.S.',
-  edu2: 'Yuhan University · Industrial Design · A.S.',
-
-  /* Other */
-  other1: 'PDF Haus 26th — Product Design Activity',
-  other2: 'Artkung Art Studio — Branding Design',
-  other3: "Samsung Galaxy 'Eunhassi' 5th Creator',",
-  other4: "Samsung Galaxy 'Eunhassi' 2nd Creator",
-  other5: 'Yuhan University — Product Design Lecture & Mentoring',
-
-  /* scroll */
-  scroll: 'Scroll',
-};
-
-var KO = {
-  greet: '반갑습니다,',
-  name: '디자이너 이은수입니다.',
-  role: 'Industrial Designer · Product · Structure · CMF · Mass Production',
-  intro: '제품을 쓰다가 손이 멈추는 순간이 있어요. 왜 이 버튼이 여기 있는지, 이 동작이 왜 한 번 더 필요한지. 저는 그 순간을 그냥 넘기지 못하는 편입니다. 7년 4개월, 정수기부터 덴탈 콘솔, 차량용 방향제까지. 카테고리마다 손이 닿는 방식은 달랐지만, 그 불편을 잡아내고 구조로 옮기는 방식은 늘 같았습니다.',
-
-  tagline: '손이 닿는 모든 순간을 설계합니다.',
-  p1: '저는 제품을 쓰다가 이상하다 싶으면 그냥 넘기지 못합니다. 왜 이 버튼이 여기 있는지, 왜 이 동작이 한 번 더 필요한지, 직접 써보고 분해하고 다시 씁니다. 사용자가 복잡하다고 말하는 순간보다, 말하기 전에 이미 손이 멈추는 그 찰나를 먼저 잡으려 합니다. 그것이 제가 생각하는 사용자가 처음 경험하는 자연스러움입니다.',
-  p1bl: '사용자가 처음 경험하는 자연스러움',
-  p2: '결제 단말기는 팔리는 제품이 아닙니다. 사장님이 매일 쓰고, 고객이 카드를 꺼내는 그 접점에 놓이는 물건입니다. 좋은 경험은 거래를 자연스럽게 만들고, 나쁜 경험은 그 순간을 어색하게 만듭니다. 저는 7년간 사람들의 손에 놓이는 물건을 만들어왔고, 그 경험이 어떻게 행동으로 이어지는지를 시장에서 검증된 결과로 확인해왔습니다.',
-  p2bl: '시장에서 검증된 결과',
-  p3: '토스플레이스에서 제가 하고 싶은 건 단순합니다. 사장님이 기기를 처음 받았을 때 설명서 없이도 쓸 수 있고, 고객이 카드를 내밀 때 머뭇거리지 않는 단말기를 만드는 것. 그 디테일을 긴밀한 협업 속에서 디자인이 완성되는 방식으로, 동료들과 함께 끝까지 밀어붙이고 싶습니다.',
-  p3bl: '긴밀한 협업 속에서 디자인이 완성',
-
-  coreStrength: 'Core Strength.',
-  c1title: '무의식적 불편을 발견하고, 구조로 해결합니다.',
-  c1sub: '사용자가 말하지 않는 불편을 행동 관찰로 정의하고 Ergonomics, 사용성 테스트, 수치 검증으로 설계에 반영합니다.',
-  c2title: '소재와 컬러가 브랜드가 되게 설계합니다.',
-  c2sub: 'CMF 전략, 소재 선정, 표면 처리를 브랜드 아이덴티티와 연결해 라인업 전체의 일관성을 만듭니다.',
-  c3title: '컨셉부터 양산까지, 전 과정을 완성합니다.',
-  c3sub: '기구 설계 이해, 금형 프로세스, 목업 검증, OEM/ODM 협업, 양산 F/U까지 혼자 완결할 수 있는 실행력을 갖추고 있습니다.',
-
-  workExp: 'Work Experience.',
-  awards: 'Awards & Recognition.',
-  education: 'Education.',
-  skills: 'Skills.',
-  tools: 'Tools.',
-  otherExp: 'Other Experiences.',
-  contact: 'Contact.',
-
-  overall: 'Overall.',
-  o1: '형태보다 사용자의 행동과 경험을 먼저 설계합니다.',
-  o2: '트렌드보다 맥락에 맞는 디자인이 옳다고 믿습니다. 유행하는 조형보다 오래 쓰이는 구조를 추구합니다.',
-  o3: '익숙하지 않은 카테고리도 리서치와 현장 관찰로 빠르게 파악해 설계에 반영할 수 있습니다.',
-  o4: '팀의 프로세스와 커뮤니케이션 방식을 개선하는 데 주도적으로 참여합니다.',
-  communication: 'Communication.',
-  comm1: '직급에 관계없이 디자인 의도와 근거를 명확하게 표현합니다.',
-  comm2: '제조사, 개발사, 마케팅 팀 등 다양한 직군과의 협업에서 공통 언어를 만드는 것을 중요하게 생각합니다.',
-  comm3: '빠른 결정보다 정확한 합의가 더 좋은 양산 결과를 만든다고 믿습니다.',
-  designProcess: 'Design Process.',
-  dp1: '사용자 행동 관찰과 리서치로 문제를 정의하고, 스케치와 목업으로 빠르게 검증합니다.',
-  dp2: 'CMF 전략은 형태 설계와 동시에 진행합니다. 소재와 컬러는 브랜드 언어의 일부입니다.',
-  dp3: '컨셉부터 양산 F/U까지 전 과정을 혼자 완결할 수 있습니다.',
-  manufacturing: 'Manufacturing.',
-  mfg1: '금형 구조, 언더컷, 뽑기 구배 등 양산 제약을 이해하고 설계에 반영합니다.',
-  mfg2: 'OEM/ODM 협업 경험을 바탕으로 제조사와 실질적인 기술 커뮤니케이션이 가능합니다.',
-  mfg3: '목업 단계에서 양산 스펙을 미리 검토해 후반 수정 비용을 줄입니다.',
-
-  edu1: '고려사이버대학교 · 디자인공학과 · 학사',
-  edu2: '유한대학교 · 테크노산업디자인학과 · 전문학사',
-
-  other1: 'PDF Haus 26기 — 제품 디자인 활동',
-  other2: '아트쿵 실험 미술학원 — 브랜딩 디자인 담당',
-  other3: "삼성전자 갤럭시 '은하씨' 5기 크리에이터",
-  other4: "삼성전자 갤럭시 '은하씨' 2기 크리에이터",
-  other5: '유한대학교 제품 디자인 강연 & 멘토',
-
-  scroll: 'Scroll',
-};
-
-function q(sel) { return document.querySelector(sel); }
-function qa(sel) { return document.querySelectorAll(sel); }
-function setText(sel, txt) { var el = q(sel); if (el) el.textContent = txt; }
-function setHTML(sel, html) { var el = q(sel); if (el) el.innerHTML = html; }
-
-function setLang(lang) {
-  currentLang = lang;
-  var t = lang === 'en' ? EN : KO;
-
-  document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
-  /* Hero */
-  var greet = q('.hero-greeting');
-  if (greet) greet.innerHTML = lang === 'en'
-    ? 'Hello<span style="color:var(--dark)">,</span>'
-    : '반갑습니다<span style="color:var(--dark)">,</span>';
-
-  var nm = q('.hero-name');
-  if (nm) nm.innerHTML = (lang === 'en' ? "I'm Eunsu Lee, Designer" : '디자이너 이은수입니다') + '<span class="period">.</span>';
-
-  setText('.hero-role', t.role);
-  setText('.hero-intro', t.intro);
-
-  /* Dark intro tagline */
-  var tl = q('.intro-tagline');
-  if (tl) {
-    var txt = lang === 'en' ? 'Designing every moment your hand touches' : '손이 닿는 모든 순간을 설계합니다';
-    tl.innerHTML = txt + '<span style="color:var(--toss)">.</span>';
+  var em=document.getElementById('contact-email');
+  if(em){
+    em.href=['ma','il','to',':',un,'@',dm].join('');
+    em.textContent=un+'@'+dm;
   }
 
-  /* Dark intro 3 paragraphs */
-  var paras = qa('.intro-para.intro-line');
-  if (paras[0]) paras[0].innerHTML = t.p1.replace(t.p1bl, '<span class="bl">' + t.p1bl + '</span>');
-  if (paras[1]) paras[1].innerHTML = t.p2.replace(t.p2bl, '<span class="bl">' + t.p2bl + '</span>');
-  if (paras[2]) paras[2].innerHTML = t.p3.replace(t.p3bl, '<span class="bl">' + t.p3bl + '</span>');
+  var bh=document.getElementById('contact-behance');
+  if(bh){
+    bh.href='https://be'+'hance.net/'+n1+n2;
+    bh.textContent='be'+'hance.net/'+n1+n2;
+  }
+})();
 
-  /* Section labels */
-  var labels = qa('.section-label');
-  var labelKeys = ['coreStrength','workExp','awards','education','skills','tools','otherExp','contact'];
-  labels.forEach(function(el, i) {
-    if (labelKeys[i] && t[labelKeys[i]]) {
-      var txt = t[labelKeys[i]];
-      el.innerHTML = txt.replace('.', '<span class="period">.</span>');
-    }
-  });
+/* lang toggle */
+var currentLang='ko';
+var EN={
+  greet:'Hello,',name:"I'm Eunsu Lee, Designer.",
+  role:'Industrial Designer · Product · Structure · CMF · Mass Production',
+  intro:"There are moments when your hand just stops. Wondering why this button is here, or why this action takes one extra step. I can't help but dig into those moments. 7 years and 4 months, from water purifiers to dental consoles to car diffusers. The way hands touched each product was different, but the way I caught the friction and translated it into structure was always the same.",
+  tagline:'Designing every moment your hand touches.',
+  p1:"I can't let go of something that feels off. I try it, take it apart, try again. Rather than waiting for users to say this is complicated, I look for the moment their hand pauses before they even say a word. That's what I mean by the naturalness users feel on first touch.",
+  p1bl:'the naturalness users feel on first touch',
+  p2:"A payment terminal isn't something people buy. It's what a shop owner uses every day, the point where a customer reaches for their card. Good experience makes that transaction seamless. Bad experience makes it awkward. I've spent 7 years making things that end up in people's hands, watching how experience translates into behavior, confirmed by results validated in the market.",
+  p2bl:'results validated in the market',
+  p3:"What I want to do at Toss Place is simple. Make a terminal that a shop owner can figure out without a manual, and that a customer can hand their card to without hesitation. I want to push those details all the way through, in the way good design is only completed through close collaboration, together with the team.",
+  p3bl:'in the way good design is only completed through close collaboration',
+  c1t:'Finding hidden friction, solving it through structure.',c1s:'Behavioral observation, ergonomics, usability testing, and numerical validation inform every design decision.',
+  c2t:'Designing so that material and color become the brand.',c2s:'CMF strategy, material selection, and surface treatment are connected to brand identity to create consistency across the lineup.',
+  c3t:'From concept to mass production, completing every phase.',c3s:'From understanding mechanism design and tooling processes, to mock-up validation, OEM/ODM collaboration, and production F/U.',
+  sk0:'Overall.',sk1:'Communication.',sk2:'Design Process.',sk3:'Manufacturing.',
+  o1:'I design behavior and experience before form.',
+  o2:'I believe context matters more than trends. I pursue structures that last over forms that are fashionable.',
+  o3:'Even in unfamiliar categories, I can quickly understand and apply research and field observation to design.',
+  o4:"I actively participate in improving the team's processes and communication.",
+  co1:'I express design intent and rationale clearly, regardless of hierarchy.',
+  co2:'Building a common language across manufacturers, developers, and marketing teams is something I value deeply.',
+  co3:'I believe precise consensus leads to better production outcomes than fast decisions.',
+  dp1:'I define problems through user observation and research, then validate quickly with sketches and mock-ups.',
+  dp2:'CMF strategy runs in parallel with form design. Material and color are part of the brand language.',
+  dp3:'I have the execution to complete the entire process from concept to production F/U.',
+  mf1:'I understand tooling structure, undercuts, and draft angles, and reflect production constraints in my designs.',
+  mf2:'Based on OEM/ODM collaboration experience, I can communicate technically with manufacturers.',
+  mf3:'I review production specs at the mock-up stage to reduce late-stage revision costs.',
+  scroll:'Scroll',
 
-  /* Core Strength texts */
-  var stTexts = qa('.strength-text');
-  var stSubs = qa('.strength-sub');
-  if (stTexts[0]) stTexts[0].textContent = t.c1title;
-  if (stTexts[1]) stTexts[1].textContent = t.c2title;
-  if (stTexts[2]) stTexts[2].textContent = t.c3title;
-  if (stSubs[0]) stSubs[0].textContent = t.c1sub;
-  if (stSubs[1]) stSubs[1].textContent = t.c2sub;
-  if (stSubs[2]) stSubs[2].textContent = t.c3sub;
+  /* Pills */
+  pill1:'Hyundai Shop Category Sales No.1',
+  pill2:'Crowdfunding 400%',
+  pill3:'Good Design Award Grand Prize',
+  pill4:'iF Design Award',
+  pill5:'Samsung × Dezeen Re:Create Finalist',
+  pill6:'Behance Featured — 4 Projects',
 
-  /* Skills */
-  var skillTitles = qa('.skills-title');
-  var skillKeys = ['overall','communication','designProcess','manufacturing'];
-  skillTitles.forEach(function(el, i) {
-    if (skillKeys[i] && t[skillKeys[i]]) {
-      el.innerHTML = t[skillKeys[i]].replace('.', '<span class="period">.</span>');
-    }
-  });
+  /* Work Experience - companies */
+  co1:'AEGIS AutoLab',co1role:'Design Lab Manager · Product Design Lead',co1period:'Mar. 2024 — Present',
+  co2:'Byne Design Associates',co2role:'Product Design Team, Associate',co2period:'May 2022 — Jun. 2023',
+  co3:'DesignTalktalk',co3role:'Product Design Team, Staff',co3period:'Jun. 2021 — Apr. 2022',
+  co4:'Saipix',co4role:'Creative Consultant / Product Designer',co4period:'Mar. 2017 — Apr. 2020',
 
-  var skillItems = qa('.skills-list li');
-  var skillTexts = [
-    t.o1, t.o2, t.o3, t.o4,
-    t.comm1, t.comm2, t.comm3,
-    t.dp1, t.dp2, t.dp3,
-    t.mfg1, t.mfg2, t.mfg3
-  ];
-  skillItems.forEach(function(el, i) {
-    if (skillTexts[i]) el.textContent = skillTexts[i];
-  });
+  /* Projects - titles & subtitles */
+  pNO:'현대 스마트키 케이스',pNOsub:'Hyundai Smart Key Case',
+  pTA:'부착형 디퓨저 & 브랜드 구축',pTAsub:'Fragrance Diffuser & Brand',
+  pAL:'커트러리 세트',pALsub:'Cutlery Set',
+  pTE:'프라이팬 핸들',pTEsub:'Frying Pan Handle',
+  pNI:'도서 무인반납기',pNIsub:'Unmanned Book Return Machine',
+  pSO:'스마트 무선충전 멀티탭',pSOsub:'Smart Wireless Charging Multi-tap',
+  pAU:'Daiohs 워터서버',pAUsub:'Daiohs Water Server',
+  pHA:'오스템 덴탈 콘솔',pHAsub:'Osstem Dental Console',
+  pME:'대형 공기청정기',pMEsub:'Large Air Purifier',
+  pLU:'식물조명',pLUsub:'Plant Lighting',
+
+  /* Sub-labels */
+  lDesc:'Description.',lWhat:'What did I do.',lResults:'Results.',
+
+  /* Awards */
+  aw1m:'Good Design Award Grand Prize',aw1s:' — Osstem Implant K5 Hanaro Console',
+  aw2m:'iF Design Award Winner',aw2s:' — Osstem Implant K5 Hanaro Console',
+  aw3m:'Good Design Award Winner',aw3s:' — Smart Wireless Charging Multi-tap',
+  aw4m:'Samsung × Dezeen Re:Create Design Challenge',aw4s:' — Finalist',
+  aw5m:'KDA (Korea Design Award)',aw5s:' — Natural Objet · TARAE Selected',
+  aw6m:'Behance Product Design Featured',aw6s:' — 4 Projects',
 
   /* Education */
-  var eduItems = qa('#section-edu .award-name');
-  if (!eduItems.length) {
-    var eduSection = null;
-    qa('.section').forEach(function(s) {
-      if (s.querySelector('.section-label') &&
-          s.querySelector('.section-label').textContent.includes('Education')) {
-        eduSection = s;
-      }
-    });
-    if (eduSection) eduItems = eduSection.querySelectorAll('.award-name');
-  }
-  if (eduItems[0]) eduItems[0].childNodes[0] && (eduItems[0].childNodes[0].textContent = t.edu1);
-  if (eduItems[1]) eduItems[1].childNodes[0] && (eduItems[1].childNodes[0].textContent = t.edu2);
+  edu1n:'Korea Cyber University · Design Engineering · B.S.',
+  edu2n:'Yuhan University · Industrial Design · A.S.',
 
   /* Other Experiences */
-  var otherKeys = ['other1','other2','other3','other4','other5'];
-  var otherMains = [];
-  qa('.award-main').forEach(function(el) {
-    var item = el.closest('.award-item');
-    if (item && item.closest('.section')) {
-      var secLabel = item.closest('.section').querySelector('.section-label');
-      if (secLabel && (secLabel.textContent.includes('Other') || secLabel.textContent.includes('Experience'))) {
-        otherMains.push(el);
-      }
+  oth1m:'PDF Haus 26th Cohort',oth1s:' — Product Design Activity',
+  oth2m:'Artkung Art Studio',oth2s:' — Branding Design',
+  oth3m:"Samsung Galaxy 'Eunhassi' 5th Creator",
+  oth4m:"Samsung Galaxy 'Eunhassi' 2nd Creator",
+  oth5m:'Yuhan University — Product Design Lecture & Mentoring',
+
+  /* Footer */
+  footer:'Eunsu Lee · Industrial Designer · 2026',
+
+  /* Core Strength pills */
+  sp1:'Hanaro — Dead Space Redesign → GD Grand Prize',
+  sp2:'AUBE — Bottle Change → Rail Structure',
+  sp3:'Allevo — Usability Test 18% Improved',
+  sp4:'OBJET — Stone Powder Coating Dev → Sales #1',
+  sp5:'TARAE — CMF 3-Color Lineup → 400% Funded',
+  sp6:'Treon — Wood·SUS·Alcantara Premium Lineup',
+  sp7:'7Y 4M Full Process Lead',
+  sp8:'Domestic & International OEM/ODM',
+  sp9:'iF · GD · Samsung×Dezeen Awards',
+
+  /* Tools labels */
+  tl1:'3D / Render',tl2:'2D / Graphic',tl3:'Collaboration / AI',
+
+  /* Work Exp - Natural Objet */
+  no_desc:'Resolved user perception issues with Hyundai's smart key by developing a pebble identity-based CMF. Self-developed stone powder paint and validated optimal tactile feel and fit through T0~T10 iterative prototyping.',
+  no_w1:'Self-developed stone powder paint — finalized spec after 10+ mix ratio tests',
+  no_w2:'Combined PC + zinc alloy dissimilar materials, secured durability with snap-fit structure',
+  no_w3:'Iterative T0~T10 prototype testing, optimized button feedback and grip fit',
+  no_w4:'OEM/ODM collaboration, mass production F/U',
+  no_r1:'Hyundai Shop 2025 Category Sales No.1',no_r1p:'Sales #1',
+  no_r2:'KDA (Korea Design Award) Selected',
+
+  /* Work Exp - TARAE */
+  ta_desc:'Solved the grip problem in vehicle vibration environments through a magnetic attachment structure. Integrated brand naming, story, CMF, and packaging design to position as a premium lifestyle object rather than a simple consumer product.',
+  ta_w1:'Magnetic attachment structure design — neodymium magnet + steel plate insert',
+  ta_w2:'Silicone CMF 3-color lineup planning, ODM management',
+  ta_w3:'Integrated brand concept, logo, packaging, and tag design',
+  ta_r1:'Crowdfunding 400% achieved',ta_r1p:'400% Funded',
+
+  /* Work Exp - Allevo */
+  al_desc:'Resolved fatigue issues caused by the mismatch between standard cutlery sizing and actual hand size and force transfer patterns for premium women's cutlery.',
+  al_w1:'Analyzed hand size and force transfer patterns — established 192mm spoon / 215mm chopstick length system',
+  al_w2:'Designed character line as a grip-guiding structural element',
+  al_w3:'Conducted in-house usability test (N=20), finalized spec based on results, mass production F/U',
+  al_r1:'Usability & fatigue improvement by 18%',al_r1p:'18% Improved',
+  al_r2:'PB CMF lineup established, delivered to Hyundai Home Shopping',
+
+  /* Work Exp - The Edge */
+  te_desc:'Resolved fit and force transfer efficiency issues for a PB home shopping frying pan handle. Simultaneously designed handle cross-section structure and SUS:Color 7:3 ratio identity to integrate function and brand.',
+  te_w1:'Handle fit and force transfer path measurement analysis, established SUS:Color 7:3 brand identity',
+  te_w2:'Extended PB home shopping lineup based on improved operability and safety',
+  te_r1:'Handle fit & force transfer accuracy improved by 22%',te_r1p:'22% Improved',
+
+  /* Work Exp - Nicom */
+  ni_desc:'Designed UI and structure for an unmanned book return machine centered on accessibility and visibility, enabling intuitive use by users with diverse physical conditions including wheelchair users and children.',
+  ni_w1:'Analyzed access height and angle by user physical condition, optimized interface placement',
+  ni_w2:'Designed enhanced visibility color system and intuitive icon UI',
+  ni_w3:'Exterior design considering structural safety and durability, mass production F/U',
+  ni_r1:'Design Festival Excellence Award',ni_r1p:'Excellence Award',
+
+  /* Work Exp - Solucom */
+  so_desc:'Redesigned the cable management and port accessibility UX of a wireless charging multi-tap for home and office environments, balancing intuitive usability with safe thermal dissipation in a compact form.',
+  so_w1:'Analyzed port access patterns and cable routing congestion, restructured UX layout',
+  so_w2:'Intuitive wireless charging zone placement, mass production design with heat dissipation structure',
+  so_r1:'Good Design Award 2022',so_r1p:'GD Award',
+
+  /* Work Exp - AUBE */
+  au_desc:'Resolved repetitive back strain from water bottle replacement, contamination risks, and hygiene issues of existing touch displays in office environments through structural and interface design. Realized industry-first touchless UX.',
+  au_w1:'Analyzed bottle change motion, introduced bottom rail structure enabling replacement without reverse motion',
+  au_w2:'Touchless display design based on IR Zone mapping (left/center/right zone separation)',
+  au_w3:'LED Bar color feedback linked with operation zones, redesigned for Japanese office environment standards, mass production F/U',
+  au_r1:'Industry-first touchless operation UX, successful Japanese market launch',au_r1p:'Japan Launch',
+
+  /* Work Exp - Hanaro */
+  ha_desc:'Resolved Dead Space, fall risk, and accessibility issues of a dental console that had features but was not designed around user behavior, through spatial inversion design.',
+  ha_w1:'Observed user behavior in medical environment, defined AS-IS Dead Space',
+  ha_w2:'Spatial inversion with lower tissue storage and upper tray, shortened console length',
+  ha_w3:'Built universal assembly design system for third-party dental consoles, mass production F/U',
+  ha_r1:'Good Design Award Grand Prize',ha_r1p:'GD Grand Prize',
+  ha_r2:'iF Design Award 2021',ha_r2p:'iF Award 2021',
+
+  /* Work Exp - MEGA */
+  me_desc:'Designed a large air purifier for public and commercial environments. Directly identified hygiene and cleaning issues with the auto grill during development, pivoted to fixed grill redesign, and secured child safety through a double structure.',
+  me_w1:'Identified hygiene and cleaning issues with auto grill during development, redesigned as fixed grill',
+  me_w2:'Developed double grill (hexagonal mesh plate) for child safety design',
+  me_w3:'Mass production F/U for public, commercial, and B2C environments',
+  me_r1:'Mass production complete for public/commercial/B2C',me_r1p:'Mass Production',
+
+  /* Work Exp - LUA */
+  lu_desc:'Defined the problem of plants failing to thrive in low-light single-person household environments through research, and designed a lifestyle plant lighting that resolved the interior incompatibility of existing plant-dedicated lights.',
+  lu_w1:'Researched causes of plant death in single-person households, derived 80% insufficient light insight',
+  lu_w2:'Developed daylight-spectrum plant LED doubling as interior lighting, iterative pipe bending and thickness testing',
+  lu_w3:'Leather and wood combination CMF design, mass production F/U',
+  lu_r1:'Seeders client mass production delivery complete',lu_r1p:'Mass Production'
+};
+var KO={
+  greet:'반갑습니다,',name:'디자이너 이은수입니다.',
+  role:'Industrial Designer · Product · Structure · CMF · Mass Production',
+  intro:'제품을 쓰다가 손이 멈추는 순간이 있어요. 왜 이 버튼이 여기 있는지, 이 동작이 왜 한 번 더 필요한지. 저는 그 순간을 그냥 넘기지 못하는 편입니다. 7년 4개월, 정수기부터 덴탈 콘솔, 차량용 방향제까지. 카테고리마다 손이 닿는 방식은 달랐지만, 그 불편을 잡아내고 구조로 옮기는 방식은 늘 같았습니다.',
+  tagline:'손이 닿는 모든 순간을 설계합니다.',
+  p1:'저는 제품을 쓰다가 이상하다 싶으면 그냥 넘기지 못합니다. 왜 이 버튼이 여기 있는지, 왜 이 동작이 한 번 더 필요한지, 직접 써보고 분해하고 다시 씁니다. 사용자가 복잡하다고 말하는 순간보다, 말하기 전에 이미 손이 멈추는 그 찰나를 먼저 잡으려 합니다. 그것이 제가 생각하는 사용자가 처음 경험하는 자연스러움입니다.',
+  p1bl:'사용자가 처음 경험하는 자연스러움',
+  p2:'결제 단말기는 팔리는 제품이 아닙니다. 사장님이 매일 쓰고, 고객이 카드를 꺼내는 그 접점에 놓이는 물건입니다. 좋은 경험은 거래를 자연스럽게 만들고, 나쁜 경험은 그 순간을 어색하게 만듭니다. 저는 7년간 사람들의 손에 놓이는 물건을 만들어왔고, 그 경험이 어떻게 행동으로 이어지는지를 시장에서 검증된 결과로 확인해왔습니다.',
+  p2bl:'시장에서 검증된 결과',
+  p3:'토스플레이스에서 제가 하고 싶은 건 단순합니다. 사장님이 기기를 처음 받았을 때 설명서 없이도 쓸 수 있고, 고객이 카드를 내밀 때 머뭇거리지 않는 단말기를 만드는 것. 그 디테일을 긴밀한 협업 속에서 디자인이 완성되는 방식으로, 동료들과 함께 끝까지 밀어붙이고 싶습니다.',
+  p3bl:'긴밀한 협업 속에서 디자인이 완성',
+  c1t:'무의식적 불편을 발견하고, 구조로 해결합니다.',c1s:'사용자가 말하지 않는 불편을 행동 관찰로 정의하고 Ergonomics, 사용성 테스트, 수치 검증으로 설계에 반영합니다.',
+  c2t:'소재와 컬러가 브랜드가 되게 설계합니다.',c2s:'CMF 전략, 소재 선정, 표면 처리를 브랜드 아이덴티티와 연결해 라인업 전체의 일관성을 만듭니다.',
+  c3t:'컨셉부터 양산까지, 전 과정을 완성합니다.',c3s:'기구 설계 이해, 금형 프로세스, 목업 검증, OEM/ODM 협업, 양산 F/U까지 혼자 완결할 수 있는 실행력을 갖추고 있습니다.',
+  sk0:'Overall.',sk1:'Communication.',sk2:'Design Process.',sk3:'Manufacturing.',
+  o1:'형태보다 사용자의 행동과 경험을 먼저 설계합니다.',
+  o2:'트렌드보다 맥락에 맞는 디자인이 옳다고 믿습니다. 유행하는 조형보다 오래 쓰이는 구조를 추구합니다.',
+  o3:'익숙하지 않은 카테고리도 리서치와 현장 관찰로 빠르게 파악해 설계에 반영할 수 있습니다.',
+  o4:'팀의 프로세스와 커뮤니케이션 방식을 개선하는 데 주도적으로 참여합니다.',
+  co1:'직급에 관계없이 디자인 의도와 근거를 명확하게 표현합니다.',
+  co2:'제조사, 개발사, 마케팅 팀 등 다양한 직군과의 협업에서 공통 언어를 만드는 것을 중요하게 생각합니다.',
+  co3:'빠른 결정보다 정확한 합의가 더 좋은 양산 결과를 만든다고 믿습니다.',
+  dp1:'사용자 행동 관찰과 리서치로 문제를 정의하고, 스케치와 목업으로 빠르게 검증합니다.',
+  dp2:'CMF 전략은 형태 설계와 동시에 진행합니다. 소재와 컬러는 브랜드 언어의 일부입니다.',
+  dp3:'컨셉부터 양산 F/U까지 전 과정을 혼자 완결할 수 있습니다.',
+  mf1:'금형 구조, 언더컷, 뽑기 구배 등 양산 제약을 이해하고 설계에 반영합니다.',
+  mf2:'OEM/ODM 협업 경험을 바탕으로 제조사와 실질적인 기술 커뮤니케이션이 가능합니다.',
+  mf3:'목업 단계에서 양산 스펙을 미리 검토해 후반 수정 비용을 줄입니다.',
+  scroll:'Scroll',
+
+  /* Pills */
+  pill1:'현대Shop 카테고리 판매 1위',
+  pill2:'크라우드 펀딩 400%',
+  pill3:'Good Design Award Grand Prize',
+  pill4:'iF Design Award',
+  pill5:'Samsung × Dezeen Re:Create Finalist',
+  pill6:'Behance Featured — 4 Projects',
+
+  /* Work Experience - companies */
+  co1:'AEGIS AutoLab',co1role:'Design Lab Manager · Product Design Lead',co1period:'Mar. 2024 — Present',
+  co2:'Byne Design Associates',co2role:'Product Design Team, Associate',co2period:'May 2022 — Jun. 2023',
+  co3:'DesignTalktalk',co3role:'Product Design Team, Staff',co3period:'Jun. 2021 — Apr. 2022',
+  co4:'Saipix',co4role:'Creative Consultant / Product Designer',co4period:'Mar. 2017 — Apr. 2020',
+
+  /* Projects - titles & subtitles */
+  pNO:'현대 스마트키 케이스',pNOsub:'Hyundai Smart Key Case',
+  pTA:'부착형 디퓨저 & 브랜드 구축',pTAsub:'Fragrance Diffuser & Brand',
+  pAL:'커트러리 세트',pALsub:'Cutlery Set',
+  pTE:'프라이팬 핸들',pTEsub:'Frying Pan Handle',
+  pNI:'도서 무인반납기',pNIsub:'Unmanned Book Return Machine',
+  pSO:'스마트 무선충전 멀티탭',pSOsub:'Smart Wireless Charging Multi-tap',
+  pAU:'Daiohs 워터서버',pAUsub:'Daiohs Water Server',
+  pHA:'오스템 덴탈 콘솔',pHAsub:'Osstem Dental Console',
+  pME:'대형 공기청정기',pMEsub:'Large Air Purifier',
+  pLU:'식물조명',pLUsub:'Plant Lighting',
+
+  /* Sub-labels */
+  lDesc:'Description.',lWhat:'What did I do.',lResults:'Results.',
+
+  /* Awards */
+  aw1m:'Good Design Award Grand Prize',aw1s:' — Osstem Implant K5 Hanaro Console',
+  aw2m:'iF Design Award Winner',aw2s:' — Osstem Implant K5 Hanaro Console',
+  aw3m:'Good Design Award Winner',aw3s:' — Smart Wireless Charging Multi-tap',
+  aw4m:'Samsung × Dezeen Re:Create Design Challenge',aw4s:' — Finalist',
+  aw5m:'KDA (Korea Design Award)',aw5s:' — Natural Objet · TARAE Selected',
+  aw6m:'Behance Product Design Featured',aw6s:' — 4 Projects',
+
+  /* Education */
+  edu1n:'Korea Cyber University · Design Engineering · B.S.',
+  edu2n:'Yuhan University · Industrial Design · A.S.',
+
+  /* Other Experiences */
+  oth1m:'PDF Haus 26th Cohort',oth1s:' — Product Design Activity',
+  oth2m:'Artkung Art Studio',oth2s:' — Branding Design',
+  oth3m:"Samsung Galaxy 'Eunhassi' 5th Creator",
+  oth4m:"Samsung Galaxy 'Eunhassi' 2nd Creator",
+  oth5m:'Yuhan University — Product Design Lecture & Mentoring',
+
+  /* Footer */
+  footer:'Eunsu Lee · Industrial Designer · 2026',
+
+  /* Core Strength pills */
+  sp1:'Hanaro — Dead Space 재설계 → GD Grand Prize',
+  sp2:'AUBE — 물통 교체 불편 → 하단 레일 구조 도입',
+  sp3:'Allevo — 사용성 테스트 18% 개선',
+  sp4:'OBJET — 돌가루 도료 자체 개발 → 판매 1위',
+  sp5:'TARAE — CMF 3컬러 라인업 → 펀딩 400%',
+  sp6:'Treon — Wood·SUS·Alcantara 프리미엄 라인업',
+  sp7:'7년 4개월 전 과정 단독 리드',
+  sp8:'국내외 OEM/ODM 협업 다수',
+  sp9:'iF · GD · Samsung×Dezeen 수상',
+
+  /* Tools labels */
+  tl1:'3D / 렌더',tl2:'2D / 그래픽',tl3:'협업 / AI',
+
+  /* Work Exp - Natural Objet */
+  no_desc:'Resolved user perception issues with Hyundai's smart key by developing a pebble identity-based CMF. Self-developed stone powder paint and validated optimal tactile feel and fit through T0~T10 iterative prototyping.',
+  no_w1:'Self-developed stone powder paint — finalized spec after 10+ mix ratio tests',
+  no_w2:'Combined PC + zinc alloy dissimilar materials, secured durability with snap-fit structure',
+  no_w3:'Iterative T0~T10 prototype testing, optimized button feedback and grip fit',
+  no_w4:'OEM/ODM collaboration, mass production F/U',
+  no_r1:'Hyundai Shop 2025 Category Sales No.1',no_r1p:'Sales #1',
+  no_r2:'KDA (Korea Design Award) Selected',
+
+  /* Work Exp - TARAE */
+  ta_desc:'Solved the grip problem in vehicle vibration environments through a magnetic attachment structure. Integrated brand naming, story, CMF, and packaging design to position as a premium lifestyle object rather than a simple consumer product.',
+  ta_w1:'Magnetic attachment structure design — neodymium magnet + steel plate insert',
+  ta_w2:'Silicone CMF 3-color lineup planning, ODM management',
+  ta_w3:'Integrated brand concept, logo, packaging, and tag design',
+  ta_r1:'Crowdfunding 400% achieved',ta_r1p:'400% Funded',
+
+  /* Work Exp - Allevo */
+  al_desc:'Resolved fatigue issues caused by the mismatch between standard cutlery sizing and actual hand size and force transfer patterns for premium women's cutlery.',
+  al_w1:'Analyzed hand size and force transfer patterns — established 192mm spoon / 215mm chopstick length system',
+  al_w2:'Designed character line as a grip-guiding structural element',
+  al_w3:'Conducted in-house usability test (N=20), finalized spec based on results, mass production F/U',
+  al_r1:'Usability & fatigue improvement by 18%',al_r1p:'18% Improved',
+  al_r2:'PB CMF lineup established, delivered to Hyundai Home Shopping',
+
+  /* Work Exp - The Edge */
+  te_desc:'Resolved fit and force transfer efficiency issues for a PB home shopping frying pan handle. Simultaneously designed handle cross-section structure and SUS:Color 7:3 ratio identity to integrate function and brand.',
+  te_w1:'Handle fit and force transfer path measurement analysis, established SUS:Color 7:3 brand identity',
+  te_w2:'Extended PB home shopping lineup based on improved operability and safety',
+  te_r1:'Handle fit & force transfer accuracy improved by 22%',te_r1p:'22% Improved',
+
+  /* Work Exp - Nicom */
+  ni_desc:'Designed UI and structure for an unmanned book return machine centered on accessibility and visibility, enabling intuitive use by users with diverse physical conditions including wheelchair users and children.',
+  ni_w1:'Analyzed access height and angle by user physical condition, optimized interface placement',
+  ni_w2:'Designed enhanced visibility color system and intuitive icon UI',
+  ni_w3:'Exterior design considering structural safety and durability, mass production F/U',
+  ni_r1:'Design Festival Excellence Award',ni_r1p:'Excellence Award',
+
+  /* Work Exp - Solucom */
+  so_desc:'Redesigned the cable management and port accessibility UX of a wireless charging multi-tap for home and office environments, balancing intuitive usability with safe thermal dissipation in a compact form.',
+  so_w1:'Analyzed port access patterns and cable routing congestion, restructured UX layout',
+  so_w2:'Intuitive wireless charging zone placement, mass production design with heat dissipation structure',
+  so_r1:'Good Design Award 2022',so_r1p:'GD Award',
+
+  /* Work Exp - AUBE */
+  au_desc:'Resolved repetitive back strain from water bottle replacement, contamination risks, and hygiene issues of existing touch displays in office environments through structural and interface design. Realized industry-first touchless UX.',
+  au_w1:'Analyzed bottle change motion, introduced bottom rail structure enabling replacement without reverse motion',
+  au_w2:'Touchless display design based on IR Zone mapping (left/center/right zone separation)',
+  au_w3:'LED Bar color feedback linked with operation zones, redesigned for Japanese office environment standards, mass production F/U',
+  au_r1:'Industry-first touchless operation UX, successful Japanese market launch',au_r1p:'Japan Launch',
+
+  /* Work Exp - Hanaro */
+  ha_desc:'Resolved Dead Space, fall risk, and accessibility issues of a dental console that had features but was not designed around user behavior, through spatial inversion design.',
+  ha_w1:'Observed user behavior in medical environment, defined AS-IS Dead Space',
+  ha_w2:'Spatial inversion with lower tissue storage and upper tray, shortened console length',
+  ha_w3:'Built universal assembly design system for third-party dental consoles, mass production F/U',
+  ha_r1:'Good Design Award Grand Prize',ha_r1p:'GD Grand Prize',
+  ha_r2:'iF Design Award 2021',ha_r2p:'iF Award 2021',
+
+  /* Work Exp - MEGA */
+  me_desc:'Designed a large air purifier for public and commercial environments. Directly identified hygiene and cleaning issues with the auto grill during development, pivoted to fixed grill redesign, and secured child safety through a double structure.',
+  me_w1:'Identified hygiene and cleaning issues with auto grill during development, redesigned as fixed grill',
+  me_w2:'Developed double grill (hexagonal mesh plate) for child safety design',
+  me_w3:'Mass production F/U for public, commercial, and B2C environments',
+  me_r1:'Mass production complete for public/commercial/B2C',me_r1p:'Mass Production',
+
+  /* Work Exp - LUA */
+  lu_desc:'Defined the problem of plants failing to thrive in low-light single-person household environments through research, and designed a lifestyle plant lighting that resolved the interior incompatibility of existing plant-dedicated lights.',
+  lu_w1:'Researched causes of plant death in single-person households, derived 80% insufficient light insight',
+  lu_w2:'Developed daylight-spectrum plant LED doubling as interior lighting, iterative pipe bending and thickness testing',
+  lu_w3:'Leather and wood combination CMF design, mass production F/U',
+  lu_r1:'Seeders client mass production delivery complete',lu_r1p:'Mass Production'
+};
+
+function q(s){return document.querySelector(s);}
+function qa(s){return document.querySelectorAll(s);}
+
+function setLang(lang){
+  currentLang=lang;
+  var t=lang==='en'?EN:KO;
+  document.getElementById('btn-ko').classList.toggle('active',lang==='ko');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+
+  var g=q('.hero-greeting');
+  if(g) g.innerHTML=(lang==='en'?'Hello':'반갑습니다')+'<span style="color:var(--dark)">,</span>';
+  var n=q('.hero-name');
+  if(n) n.innerHTML=(lang==='en'?"I'm Eunsu Lee, Designer":'디자이너 이은수입니다')+'<span class="period">.</span>';
+  var ri=q('.hero-role'); if(ri) ri.textContent=t.role;
+  var hi=q('.hero-intro'); if(hi) hi.textContent=t.intro;
+
+  var tl=q('.intro-tagline');
+  if(tl) tl.innerHTML=(lang==='en'?'Designing every moment your hand touches':'손이 닿는 모든 순간을 설계합니다')+'<span style="color:var(--toss)">.</span>';
+
+  var ps=qa('.intro-para.intro-line');
+  function mkp(txt,bl){return txt.replace(bl,'<span class="bl">'+bl+'</span>');}
+  if(ps[0]) ps[0].innerHTML=mkp(t.p1,t.p1bl);
+  if(ps[1]) ps[1].innerHTML=mkp(t.p2,t.p2bl);
+  if(ps[2]) ps[2].innerHTML=mkp(t.p3,t.p3bl);
+
+  var st=qa('.strength-text'),ss=qa('.strength-sub');
+  if(st[0]){st[0].textContent=t.c1t;ss[0].textContent=t.c1s;}
+  if(st[1]){st[1].textContent=t.c2t;ss[1].textContent=t.c2s;}
+  if(st[2]){st[2].textContent=t.c3t;ss[2].textContent=t.c3s;}
+
+  var sk=qa('.skills-title');
+  var skk=['sk0','sk1','sk2','sk3'];
+  sk.forEach(function(el,i){if(t[skk[i]]) el.innerHTML=t[skk[i]].replace('.','<span class="period">.</span>');});
+
+  var sli=qa('.skills-list li');
+  var sv=[t.o1,t.o2,t.o3,t.o4,t.co1,t.co2,t.co3,t.dp1,t.dp2,t.dp3,t.mf1,t.mf2,t.mf3];
+  sli.forEach(function(el,i){if(sv[i]) el.textContent=sv[i];});
+
+  var sc=q('.scroll-hint span'); if(sc) sc.textContent=t.scroll;
+
+  /* Pills */
+  var pills=qa('.result-pill');
+  var pillKeys=['pill1','pill2','pill3','pill4','pill5','pill6'];
+  pills.forEach(function(el,i){
+    if(t[pillKeys[i]]){
+      var dot=el.querySelector('.dot');
+      el.textContent='';
+      if(dot) el.appendChild(dot);
+      el.appendChild(document.createTextNode(t[pillKeys[i]]));
     }
   });
-  otherMains.forEach(function(el, i) {
-    if (otherKeys[i] && t[otherKeys[i]]) el.textContent = t[otherKeys[i]];
+
+  /* Work Experience - companies */
+  var coEls=qa('.exp-company');
+  var coKeys=[['co1'],['co2'],['co3'],['co4']];
+  coEls.forEach(function(el,i){
+    if(t['co'+(i+1)]){
+      el.innerHTML=t['co'+(i+1)]+'<span class="period">.</span>';
+    }
+  });
+  var metaEls=qa('.exp-meta');
+  metaEls.forEach(function(el,i){
+    var rk='co'+(i+1)+'role', pk='co'+(i+1)+'period';
+    if(t[rk]) el.innerHTML='<div class="exp-meta-role">'+t[rk]+'</div><div>'+t[pk]+'</div>';
   });
 
-  /* Scroll hint */
-  var scrollSpan = q('.scroll-hint span');
-  if (scrollSpan) scrollSpan.textContent = t.scroll;
+  /* Project periods (subtitles) */
+  var projMap=[
+    ['Natural Objet','pNO'],['TARAE','pTA'],['Allevo','pAL'],
+    ['The Edge','pTE'],['Nicom','pNI'],['Solucom','pSO'],
+    ['AUBE','pAU'],['Hanaro','pHA'],['MEGA','pME'],['LUA','pLU']
+  ];
+  projMap.forEach(function(pm){
+    var pname=pm[0], pkey=pm[1];
+    qa('.exp-project-block').forEach(function(block){
+      var title=block.querySelector('.exp-project-title');
+      if(title && title.textContent.includes(pname)){
+        var periods=block.querySelectorAll('.exp-project-period');
+        if(periods[0] && t[pkey]) periods[0].textContent=t[pkey+'sub']||t[pkey];
+      }
+    });
+  });
+
+  /* Sub-labels */
+  qa('.exp-sub-label').forEach(function(el){
+    var txt=el.textContent.trim().replace('.','');
+    if(txt==='Description') el.innerHTML=(lang==='en'?'Description.':'Description.')+'';
+    else if(txt==='What did I do') el.innerHTML='What did I do<span class="period">.</span>';
+    else if(txt==='Results') el.innerHTML='Results<span class="period">.</span>';
+  });
+
+  /* Awards */
+  var awMains=qa('.award-main'), awSubs=qa('.award-sub');
+  var awmk=['aw1m','aw2m','aw3m','aw4m','aw5m','aw6m'];
+  var awsk=['aw1s','aw2s','aw3s','aw4s','aw5s','aw6s'];
+  awMains.forEach(function(el,i){
+    // Awards 섹션만 (Other Experiences 제외)
+    var sec=el.closest('.section');
+    var lbl=sec&&sec.querySelector('.section-label');
+    if(lbl&&(lbl.textContent.includes('Awards')||lbl.textContent.includes('Recognition'))){
+      if(t[awmk[i]]) el.textContent=t[awmk[i]];
+      if(awSubs[i]&&t[awsk[i]]) awSubs[i].textContent=t[awsk[i]];
+    }
+  });
+
+  /* Education */
+  var eduSec=null;
+  qa('.section').forEach(function(s){
+    var lbl=s.querySelector('.section-label');
+    if(lbl&&lbl.textContent.includes('Education')) eduSec=s;
+  });
+  if(eduSec){
+    var eduNames=eduSec.querySelectorAll('.award-name');
+    if(eduNames[0]&&t.edu1n) eduNames[0].childNodes[0].textContent=t.edu1n;
+    if(eduNames[1]&&t.edu2n) eduNames[1].childNodes[0].textContent=t.edu2n;
+  }
+
+  /* Other Experiences */
+  var othSec=null;
+  qa('.section').forEach(function(s){
+    var lbl=s.querySelector('.section-label');
+    if(lbl&&(lbl.textContent.includes('Other')||lbl.textContent.includes('Experiences'))) othSec=s;
+  });
+  if(othSec){
+    var othMains=othSec.querySelectorAll('.award-main');
+    var othSubs=othSec.querySelectorAll('.award-sub');
+    var omk=['oth1m','oth2m','oth3m','oth4m','oth5m'];
+    var osk=['oth1s','oth2s'];
+    othMains.forEach(function(el,i){if(t[omk[i]]) el.textContent=t[omk[i]];});
+    othSubs.forEach(function(el,i){if(t[osk[i]]) el.textContent=t[osk[i]];});
+  }
+
+  /* Footer */
+  var ft=q('footer'); if(ft&&t.footer) ft.textContent=t.footer;
+
+  /* Core Strength pills */
+  var spills=qa('.strength-pills .s-pill');
+  var spk=['sp1','sp2','sp3','sp4','sp5','sp6','sp7','sp8','sp9'];
+  spills.forEach(function(el,i){if(t[spk[i]]) el.textContent=t[spk[i]];});
+
+  /* Tools labels */
+  var tlabels=qa('.tool-label');
+  var tlk=['tl1','tl2','tl3'];
+  tlabels.forEach(function(el,i){if(t[tlk[i]]) el.textContent=t[tlk[i]];});
+
+  /* Work Experience - project content */
+  var projData=[
+    {name:'Natural Objet', desc:'no_desc', w:['no_w1','no_w2','no_w3','no_w4'], r:['no_r1','no_r2'], rp:['no_r1p',null]},
+    {name:'TARAE',         desc:'ta_desc', w:['ta_w1','ta_w2','ta_w3'],         r:['ta_r1'],          rp:['ta_r1p']},
+    {name:'Allevo',        desc:'al_desc', w:['al_w1','al_w2','al_w3'],         r:['al_r1','al_r2'],  rp:['al_r1p',null]},
+    {name:'The Edge',      desc:'te_desc', w:['te_w1','te_w2'],                 r:['te_r1'],          rp:['te_r1p']},
+    {name:'Nicom',         desc:'ni_desc', w:['ni_w1','ni_w2','ni_w3'],         r:['ni_r1'],          rp:['ni_r1p']},
+    {name:'Solucom',       desc:'so_desc', w:['so_w1','so_w2'],                 r:['so_r1'],          rp:['so_r1p']},
+    {name:'AUBE',          desc:'au_desc', w:['au_w1','au_w2','au_w3'],         r:['au_r1'],          rp:['au_r1p']},
+    {name:'Hanaro',        desc:'ha_desc', w:['ha_w1','ha_w2','ha_w3'],         r:['ha_r1','ha_r2'],  rp:['ha_r1p','ha_r2p']},
+    {name:'MEGA',          desc:'me_desc', w:['me_w1','me_w2','me_w3'],         r:['me_r1'],          rp:['me_r1p']},
+    {name:'LUA',           desc:'lu_desc', w:['lu_w1','lu_w2','lu_w3'],         r:['lu_r1'],          rp:['lu_r1p']},
+  ];
+
+  projData.forEach(function(proj){
+    qa('.exp-project-block').forEach(function(block){
+      var title=block.querySelector('.exp-project-title');
+      if(!title||!title.textContent.includes(proj.name)) return;
+
+      var desc=block.querySelector('.exp-desc-text');
+      if(desc&&t[proj.desc]) desc.textContent=t[proj.desc];
+
+      var bullets=block.querySelectorAll('.exp-bullet-list');
+      if(bullets[0]){
+        var wlis=bullets[0].querySelectorAll('li');
+        proj.w.forEach(function(wk,i){if(wlis[i]&&t[wk]) wlis[i].textContent=t[wk];});
+      }
+      if(bullets[1]){
+        var rlis=bullets[1].querySelectorAll('li');
+        proj.r.forEach(function(rk,i){
+          if(rlis[i]&&t[rk]){
+            var rpk=proj.rp[i];
+            var badge=rlis[i].querySelector('.exp-result');
+            rlis[i].textContent=t[rk];
+            if(badge&&rpk&&t[rpk]){
+              var nb=document.createElement('span');
+              nb.className='exp-result';
+              nb.textContent=t[rpk];
+              rlis[i].appendChild(nb);
+            }
+          }
+        });
+      }
+    });
+  });
 }
 
-/* ── 스크롤 인터랙션 ── */
-(function() {
-  var introLines = document.querySelectorAll('.intro-line');
-  var sections = document.querySelectorAll('.section');
-
-  var introObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var siblings = Array.from(el.parentElement.querySelectorAll('.intro-line'));
-        var idx = siblings.indexOf(el);
-        setTimeout(function() { el.classList.add('visible'); }, idx * 50);
-        introObs.unobserve(el);
+/* scroll observer */
+(function(){
+  var il=document.querySelectorAll('.intro-line');
+  var sc=document.querySelectorAll('.section');
+  var io=new IntersectionObserver(function(e){
+    e.forEach(function(e){
+      if(e.isIntersecting){
+        var el=e.target,si=Array.from(el.parentElement.querySelectorAll('.intro-line')),idx=si.indexOf(el);
+        setTimeout(function(){el.classList.add('visible');},idx*50);
+        io.unobserve(el);
       }
     });
-  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
-  introLines.forEach(function(el) { introObs.observe(el); });
+  },{threshold:0,rootMargin:'0px'});
+  il.forEach(function(el){io.observe(el);});
 
-  var secObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        secObs.unobserve(entry.target);
-      }
+  var so=new IntersectionObserver(function(e){
+    e.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');so.unobserve(e.target);}
     });
-  }, { threshold: 0, rootMargin: '200px 0px 0px 0px' });
-  sections.forEach(function(el) { secObs.observe(el); });
+  },{threshold:0,rootMargin:'200px 0px 0px 0px'});
+  sc.forEach(function(el){so.observe(el);});
 
-  setTimeout(function() {
-    sections.forEach(function(el) {
-      var rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 200) {
-        el.classList.add('visible');
-      }
+  setTimeout(function(){
+    sc.forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight+200) el.classList.add('visible');
     });
-  }, 300);
+  },300);
 })();
 </script>
 </body>
